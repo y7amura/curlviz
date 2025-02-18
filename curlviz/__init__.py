@@ -7,9 +7,15 @@ __all__ = [
     # common
     "consts",
     # Sheet state
-    "Team", "Stone", "Sheet",
+    "Team",
+    "Stone",
+    "Sheet",
     # Configuration
-    "Config", "Colors",
+    "Config",
+    "Colors",
     # Streams
-    "Stream", "PDF", "SVG", "PNG",
+    "Stream",
+    "PDF",
+    "SVG",
+    "PNG",
 ]

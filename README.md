@@ -6,6 +6,39 @@ This library helps to create a curling sheet image with the given stones.
 
 This project is not widely tested yet.
 
+## Install the library
+
+### Using UV or Poetry
+
+Configure the `pyproject.toml` as following.
+
+```toml
+[project]
+...
+requires-python = ">=3.12"
+dependencies = [
+  ...
+  "curlviz",
+]
+
+[tool.uv.sources]
+curlviz = { git = "https://github.com/y7amura/curlviz.git", branch = "main" }
+
+[tool.poetry.dependencies]
+curlviz = { git = "https://github.com/y7amura/curlviz.git", branch = "main" }
+```
+
+### Using pip
+
+Download the library directly from the GitHub repository.
+
+```sh
+$ python3 -V
+3.12.0
+$ pip install git+https://github.com/y7amura/curlviz.git
+$ python3 -m curlviz.cli --help  # shows help if the library is successfully installed
+```
+
 ## How to use `curlviz` in a Python script
 
 A basic procedure to export a sheet image is following.
@@ -43,6 +76,27 @@ stream = curlviz.stream.PDF("output.pdf")
 stream.export(sheet)
 ```
 
+## CLI command (experimental)
+
+This library also provides a CLI command to export a sheet image with a set of stone positions given by a JSON file.
+
+Given a JSON file `stone.json`, providing a set of stone positions. The following command will generate `output.pdf` based on the given stone positions.
+
+```sh
+python3 -m curlviz.cli export --output output.pdf stone.json
+```
+
+See the help for more details.
+
+```sh
+python3 -m curlviz.cli --help
+```
+
+Also, see the [example](examples/stones.json) about the format of JSON file for the stone positions.
+Note that, `curlviz.Sheet` object accepts 16 stones at most. If you try to put 17 or more stones, the command will be terminated with error.
+
+CLI command feature is still experimental, and not well-tested yet.
+
 ## Configuration
 
 The exported image can be customized, e.g. you can change the sheet width, background color, stone colors, etc.
@@ -65,6 +119,12 @@ The default configuration is hard-coded as the following.
     ]
   }
 }
+```
+
+The following command exports the default configuration into `config.json`.
+
+```sh
+python -m curlviz.cli config --output config.json
 ```
 
 ### General keys

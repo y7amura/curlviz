@@ -1,7 +1,14 @@
 [project]
 name = "curlviz"
-version = "1.0.0"
+version = "1.1.0"
 description = "Visualization library for a curling sheet"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = ["skia-python>=87.6"]
+
+[project.scripts]
+curlviz = "curlviz.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
